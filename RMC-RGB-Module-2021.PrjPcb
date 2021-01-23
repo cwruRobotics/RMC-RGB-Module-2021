@@ -73,6 +73,27 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=NHVGPNMM
 
+[Document3]
+DocumentPath=Microcontroller_PCB_2_Layer.PcbDoc
+AnnotationEnabled=1
+AnnotateStartValue=1
+AnnotationIndexControlEnabled=0
+AnnotateSuffix=
+AnnotateScope=All
+AnnotateOrder=-1
+DoLibraryUpdate=1
+DoDatabaseUpdate=1
+ClassGenCCAutoEnabled=1
+ClassGenCCAutoRoomEnabled=1
+ClassGenNCAutoScope=None
+DItemRevisionGUID=
+GenerateClassCluster=0
+DocumentUniqueId=YOIBHBFC
+
+[GeneratedDocument1]
+DocumentPath=Project Outputs for RMC-RGB-Module-2021\Design Rule Check - Microcontroller_PCB_2_Layer.html
+DItemRevisionGUID=
+
 [Configuration1]
 Name=Sources
 ParameterCount=0
