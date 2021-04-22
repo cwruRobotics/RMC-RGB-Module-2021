@@ -1,0 +1,5 @@
+DRC Rules Export File for PCB: D:\adam\Documents\CWRU\CWRUbotix\E-Bay Mockup\RMC-RGB-Module-2021\Microcontroller_PCB_2_Layer.PcbDoc
+RuleKind=SolderMaskExpansion|RuleName=SolderMaskExpansion|Scope=Board|Minimum=4.00
+RuleKind=Width|RuleName=Width|Scope=Board|Minimum=5.91
+RuleKind=Clearance|RuleName=Clearance|Scope=Board|Minimum=9.84
+RuleKind=ShortCircuit|RuleName=ShortCircuit|Scope=Board|Allowed=0

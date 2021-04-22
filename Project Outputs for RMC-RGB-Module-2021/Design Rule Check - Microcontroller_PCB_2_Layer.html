@@ -1,0 +1,430 @@
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html">
+<style type="text/css">
+		h1, h2, h3, h4, h5, h6 {
+			font-family : segoe ui;
+			color : black;
+			background-color : #EDE7D9;
+			padding: 0.3em;
+		}
+
+		h1 {
+			font-size: 1.2em;
+		}		
+
+		h2 {
+			font-size: 1.2em;
+		}
+
+		body {
+			font-family : segoe ui;
+		}
+
+		td, th {
+			padding: 0.5em;
+			text-align : left;
+			width: 10em;
+		}
+		th {
+			background-color : #EEEEEE;
+
+		}
+		th.column1, td.column1 {
+			text-align: left;
+			width : auto;
+		}
+		table {
+			width : 100%;
+			font-size: 0.9em;
+		}
+
+		.DRC_summary_header {
+			padding-bottom : 0.1em;
+			border : 0px solid black;
+			width: 100%;
+			align: left;
+		}
+
+		.DRC_summary_header_col1,
+		.DRC_summary_header_col2, 
+		.DRC_summary_header_col3 {
+			color : black;
+			font-size:100%;
+			padding : 0em;
+			padding-top : 0.2em;
+			padding-bottom 0.2em;
+			border : 0px solid black;
+			vertical-align: top;
+			text-align: left;
+		}
+
+		.DRC_summary_header_col1 {
+			font-weight: bold;
+			width: 8em;
+		}
+
+		.DRC_summary_header_col2 {
+			width: 0.1em;
+		
+		}
+
+		.DRC_summary_header_col3 {
+			width : auto;
+		}
+
+		.header_holder {
+		    Width = 100%;
+		    border = 0px solid green;
+		    padding = 0;
+		}
+
+
+		.front_matter, .front_matter_column1, .front_matter_column2, .front_matter_column3
+		{
+			left : 0;
+			top : 0;
+			padding: 0em;
+			padding-top : 0.1em;
+			border : 0px solid black;
+			width : 100%;
+			vertical-align: top;
+			text-align: left;
+		}
+
+		.front_matter_column1 {
+			width : 8em;
+			font-weight: bold;
+		}
+
+		.front_matter_column2 {
+			width: 0.1em;
+		}
+
+		.front_matter_column3 {
+			width : auto;
+		}
+
+		.total_column1, .total_column {
+			font-weight : bold;
+		}
+		.total_column1 {
+			text-align : left;
+		}
+		.warning, .error {
+			color : red;
+			font-weight : bold;
+		}
+		tr.onmouseout_odd {
+			background-color : #white;
+		}
+		tr.onmouseout_even { 
+			background-color : #FAFAFA;
+		}
+		tr.onmouseover_odd, tr.onmouseover_even { 
+			background-color : #EEEEEE;
+		} 
+		a:link, a:visited, .q a:link,.q a:active,.q {
+			color: #21489e; 
+		}
+		a:link.callback, a:visited.callback { 
+			color: #21489e;
+		}
+		a:link.customize, a:visited.customize {
+			color: #C0C0C0;
+			position: absolute; 
+			right: 10px;
+		}	
+		p.contents_level1 {
+			font-weight : bold;
+			font-size : 110%;
+			margin : 0.5em;
+		}
+		p.contents_level2 {
+			position : relative;
+			left : 20px;
+			margin : 0.5em;
+		}
+	</style><script type="text/javascript">
+		function coordToMils(coord) {
+			var number = coord / 10000;
+			
+			if (number != number.toFixed(3))
+				number = number.toFixed(3);
+
+			return number + 'mil'
+		}
+
+		function coordToMM(coord) {
+			var number = 0.0254 * coord / 10000;
+			
+			if (number != number.toFixed(4))
+				number = number.toFixed(4);
+			
+			return number + 'mm'
+		}
+	
+		function convertCoord(coordNode, units) {
+			for (var i = 0; i < coordNode.childNodes.length; i++) {
+				coordNode.removeChild(coordNode.childNodes[i]);
+			}
+
+			var coord = coordNode.getAttribute('value');
+			if (coord != null) {
+				if (units == 'mm') {
+					textNode = document.createTextNode(coordToMM(coord));
+					coordNode.appendChild(textNode);
+				} else if (units == 'mil') {
+					textNode = document.createTextNode(coordToMils(coord));		
+					coordNode.appendChild(textNode);	
+				}
+			}
+		}
+	
+		function convertUnits(unitNode, units) {
+			for (var i = 0; i < unitNode.childNodes.length; i++) {
+				unitNode.removeChild(unitNode.childNodes[i]);		
+			}
+		
+			textNode = document.createTextNode(units); 
+			unitNode.appendChild(textNode);
+		}
+	
+		function changeUnits(radio_input, units) {
+			if (radio_input.checked) {
+			
+				var elements = document.getElementsByName('coordinate');
+				if (elements) {
+					for (var i = 0; i < elements.length; i++) {
+						convertCoord(elements[i], units);
+					}
+				}
+	
+				var elements = document.getElementsByName('units');
+				if (elements) {
+					for (var i = 0; i < elements.length; i++) {
+						convertUnits(elements[i], units);
+					}
+				}
+			}
+		}
+	</script><title>Design Rule Verification Report</title>
+</head>
+<body onload=""><img ALT="Altium" src="
+			file://D:\Users\Public\Documents\Altium\AD20\Templates\AD_logo.png
+		"><h1>Design Rule Verification Report</h1>
+<table class="header_holder">
+<td class="column1">
+<table class="front_matter">
+<tr class="front_matter">
+<td class="front_matter_column1">Date:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">2021-01-23</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Time:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">6:07:15 AM</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Elapsed Time:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">00:00:01</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Filename:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3"><a href="file:///D:\adam\Documents\CWRU\CWRUbotix\E-Bay Mockup\RMC-RGB-Module-2021\Microcontroller_PCB_2_Layer.PcbDoc" class="file"><acronym title="D:\adam\Documents\CWRU\CWRUbotix\E-Bay Mockup\RMC-RGB-Module-2021\Microcontroller_PCB_2_Layer.PcbDoc">D:\adam\Documents\CWRU\CWRUbotix\E-Bay Mockup\RMC-RGB-Module-2021\Microcontroller_PCB_2_Layer.PcbDoc</acronym></a></td>
+</tr>
+</table>
+</td>
+<td class="column2">
+<table class="DRC_summary_header">
+<tr>
+<td class="DRC_summary_header_col1">Warnings:</td>
+<td class="DRC_summary_header_col2"></td>
+<td class="DRC_summary_header_col3">0</td></tr>
+<tr>
+<td class="DRC_summary_header_col1">Rule Violations:</td>
+<td class="DRC_summary_header_col2"></td>
+<td class="DRC_summary_header_col3" style="color : red">30</td></tr>
+</table>
+</td>
+</table><a name="IDHJ1P40D3FE0FFLXM0Z0IY1EUHQTSUMDA45M5JGWNUQW4REBL2LI"><h2>Summary</h2></a><table>
+<tr>
+<th class="column1">Warnings</th>
+<th class="column2">Count</th>
+</tr>
+<tr>
+<td style="font-weight : bold; text-align : right" class="column1">Total</td>
+<td style="font-weight : bold" class="column2">0</td>
+</tr>
+</table><br><table>
+<tr>
+<th class="column1">Rule Violations</th>
+<th class="column2">Count</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDPDAHLPELOH4GNZTYKW2TCM23BFNORIYIKICP3UFNAO3BDBAWSHCO">Clearance Constraint (Gap=0.25mm) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDXY00SD3HVAM2HR1MHOLQOLXZ1PPHKLDWLIAWDHSNSW3C5KR004F">Short-Circuit Constraint (Allowed=No) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDQLQRV4DV1TFHCLO00DLGRXHZR5AHXWKRFLKOOFTHACZPEI1FK4H">Un-Routed Net Constraint ( (All) )</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDKAAXA3JNGZ1IIVNWWY42VJQ30CX3Z1EY25VPFWENUOLFJZURYCJP">Modified Polygon (Allow modified: No), (Allow shelved: No)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#ID3UD5HHCJDQSUE3VAEFF1GATATCEXY5PW1JMRTQNGJNMS2X214EOJ">Width Constraint (Min=0.15mm) (Max=25mm) (Preferred=0.25mm) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDBZABJ4HFY0ABLSSLGA5DOOIVOG53CLK1EN3LZOFALJNP2SXHTQIC">SMD Neck-Down Constraint (Percent=100%) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDMNVN3T1G23NUNWF2T3G3EO5KYK22DMSVHBTBB4KA4BPMYFUM0DUJ">Power Plane Connect Rule(Relief Connect )(Expansion=0.508mm) (Conductor Width=0.254mm) (Air Gap=0.254mm) (Entries=4) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDTA2UTEWG5CYPBPUY4HPVVSY3PBVKPGC5LD3NKFTGUPLDMOI0NHP">Hole Size Constraint (Min=0.2mm) (Max=6mm) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDUPQFQU00331IFW4UIQZVYWSVLMSK3K5ZK1DFUCLVJGRFGZOL5EZ">Hole To Hole Clearance (Gap=0.254mm) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#ID3L03LCJ1G3ULCY0VFLYI3YWJJKKKWSZIJ2HURDN41JN1I4WOKQ5L">Minimum Solder Mask Sliver (Gap=0.15mm) (All),(All)</a></td>
+<td class="column2">16</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDUCTCRJMU2OCINQO2FX3NLB5SDMAS3XAO1WUAPLC5GM0NASDRM1FI">Silk To Solder Mask (Clearance=0mm) (IsPad),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDTGB3WTHDUGSDO5UBBQY23PGAQGCJ1HKNYKNSFGPOQ01RSZO1K0C">Silk to Silk (Clearance=0mm) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDQEW1DHJJHCIPGOJJH2ZH2OBMIJRMPM0XDBQPZ3GVETB3GEUPIDS">Net Antennae (Tolerance=0mm) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDE0IDSU2M3FOHJLOP1IWEBTG1ZI0TNWC1YPG2XFFQ4MSF1FAFPTOG">Board Clearance Constraint (Gap=0mm) (All)</a></td>
+<td class="column2">14</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDSVTPIOPNI0WBDQEUOVSJAKFS1OGR3CJYWQT5IYLIOPHSVIKF0IAG">Height Constraint (Min=0mm) (Max=25.4mm) (Prefered=12.7mm) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr>
+<td style="font-weight : bold; text-align : right" class="column1">Total</td>
+<td style="font-weight : bold" class="column2">30</td>
+</tr>
+</table><br><a name="ID3L03LCJ1G3ULCY0VFLYI3YWJJKKKWSZIJ2HURDN41JN1I4WOKQ5L"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Minimum Solder Mask Sliver (Gap=0.15mm) (All),(All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\adam\Documents\CWRU\CWRUbotix\E-Bay Mockup\RMC-RGB-Module-2021\Microcontroller_PCB_2_Layer.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2374.178mil|Location2.X=2381.334mil|Location1.Y=1548.785mil|Location2.Y=1555.94mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\adam\Documents\CWRU\CWRUbotix\E-Bay Mockup\RMC-RGB-Module-2021\Microcontroller_PCB_2_Layer.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2374.178mil|Location2.X=2381.334mil|Location1.Y=1548.785mil|Location2.Y=1555.94mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.11mm &lt; 0.15mm) Between Pad U1-1(18.195mm,10.865mm) on Top Layer And Pad U1-11(20.17mm,9.265mm) on Top Layer [Top Solder] Mask Sliver [0.11mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\adam\Documents\CWRU\CWRUbotix\E-Bay Mockup\RMC-RGB-Module-2021\Microcontroller_PCB_2_Layer.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2486.383mil|Location2.X=2493.538mil|Location1.Y=1557.249mil|Location2.Y=1564.405mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\adam\Documents\CWRU\CWRUbotix\E-Bay Mockup\RMC-RGB-Module-2021\Microcontroller_PCB_2_Layer.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2486.383mil|Location2.X=2493.538mil|Location1.Y=1557.249mil|Location2.Y=1564.405mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.11mm &lt; 0.15mm) Between Pad U1-10(22.145mm,10.865mm) on Top Layer And Pad U1-11(20.17mm,9.265mm) on Top Layer [Top Solder] Mask Sliver [0.11mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\adam\Documents\CWRU\CWRUbotix\E-Bay Mockup\RMC-RGB-Module-2021\Microcontroller_PCB_2_Layer.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2374.178mil|Location2.X=2381.334mil|Location1.Y=1536.58mil|Location2.Y=1543.735mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\adam\Documents\CWRU\CWRUbotix\E-Bay Mockup\RMC-RGB-Module-2021\Microcontroller_PCB_2_Layer.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2374.178mil|Location2.X=2381.334mil|Location1.Y=1536.58mil|Location2.Y=1543.735mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.11mm &lt; 0.15mm) Between Pad U1-11(20.17mm,9.265mm) on Top Layer And Pad U1-2(18.195mm,10.065mm) on Top Layer [Top Solder] Mask Sliver [0.11mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\adam\Documents\CWRU\CWRUbotix\E-Bay Mockup\RMC-RGB-Module-2021\Microcontroller_PCB_2_Layer.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2374.178mil|Location2.X=2381.334mil|Location1.Y=1505.084mil|Location2.Y=1512.239mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\adam\Documents\CWRU\CWRUbotix\E-Bay Mockup\RMC-RGB-Module-2021\Microcontroller_PCB_2_Layer.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2374.178mil|Location2.X=2381.334mil|Location1.Y=1505.084mil|Location2.Y=1512.239mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.11mm &lt; 0.15mm) Between Pad U1-11(20.17mm,9.265mm) on Top Layer And Pad U1-3(18.195mm,9.265mm) on Top Layer [Top Solder] Mask Sliver [0.11mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\adam\Documents\CWRU\CWRUbotix\E-Bay Mockup\RMC-RGB-Module-2021\Microcontroller_PCB_2_Layer.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2374.178mil|Location2.X=2381.334mil|Location1.Y=1473.588mil|Location2.Y=1480.743mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\adam\Documents\CWRU\CWRUbotix\E-Bay Mockup\RMC-RGB-Module-2021\Microcontroller_PCB_2_Layer.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2374.178mil|Location2.X=2381.334mil|Location1.Y=1473.588mil|Location2.Y=1480.743mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.11mm &lt; 0.15mm) Between Pad U1-11(20.17mm,9.265mm) on Top Layer And Pad U1-4(18.195mm,8.465mm) on Top Layer [Top Solder] Mask Sliver [0.11mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\adam\Documents\CWRU\CWRUbotix\E-Bay Mockup\RMC-RGB-Module-2021\Microcontroller_PCB_2_Layer.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2374.178mil|Location2.X=2381.334mil|Location1.Y=1433.627mil|Location2.Y=1440.783mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\adam\Documents\CWRU\CWRUbotix\E-Bay Mockup\RMC-RGB-Module-2021\Microcontroller_PCB_2_Layer.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2374.178mil|Location2.X=2381.334mil|Location1.Y=1433.627mil|Location2.Y=1440.783mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.11mm &lt; 0.15mm) Between Pad U1-11(20.17mm,9.265mm) on Top Layer And Pad U1-5(18.195mm,7.665mm) on Top Layer [Top Solder] Mask Sliver [0.11mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\adam\Documents\CWRU\CWRUbotix\E-Bay Mockup\RMC-RGB-Module-2021\Microcontroller_PCB_2_Layer.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2486.383mil|Location2.X=2493.538mil|Location1.Y=1442.09mil|Location2.Y=1449.245mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\adam\Documents\CWRU\CWRUbotix\E-Bay Mockup\RMC-RGB-Module-2021\Microcontroller_PCB_2_Layer.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2486.383mil|Location2.X=2493.538mil|Location1.Y=1442.09mil|Location2.Y=1449.245mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.11mm &lt; 0.15mm) Between Pad U1-11(20.17mm,9.265mm) on Top Layer And Pad U1-6(22.145mm,7.665mm) on Top Layer [Top Solder] Mask Sliver [0.11mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\adam\Documents\CWRU\CWRUbotix\E-Bay Mockup\RMC-RGB-Module-2021\Microcontroller_PCB_2_Layer.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2486.383mil|Location2.X=2493.538mil|Location1.Y=1454.297mil|Location2.Y=1461.452mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\adam\Documents\CWRU\CWRUbotix\E-Bay Mockup\RMC-RGB-Module-2021\Microcontroller_PCB_2_Layer.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2486.383mil|Location2.X=2493.538mil|Location1.Y=1454.297mil|Location2.Y=1461.452mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.11mm &lt; 0.15mm) Between Pad U1-11(20.17mm,9.265mm) on Top Layer And Pad U1-7(22.145mm,8.465mm) on Top Layer [Top Solder] Mask Sliver [0.11mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\adam\Documents\CWRU\CWRUbotix\E-Bay Mockup\RMC-RGB-Module-2021\Microcontroller_PCB_2_Layer.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2486.383mil|Location2.X=2493.538mil|Location1.Y=1485.793mil|Location2.Y=1492.948mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\adam\Documents\CWRU\CWRUbotix\E-Bay Mockup\RMC-RGB-Module-2021\Microcontroller_PCB_2_Layer.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2486.383mil|Location2.X=2493.538mil|Location1.Y=1485.793mil|Location2.Y=1492.948mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.11mm &lt; 0.15mm) Between Pad U1-11(20.17mm,9.265mm) on Top Layer And Pad U1-8(22.145mm,9.265mm) on Top Layer [Top Solder] Mask Sliver [0.11mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\adam\Documents\CWRU\CWRUbotix\E-Bay Mockup\RMC-RGB-Module-2021\Microcontroller_PCB_2_Layer.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2486.383mil|Location2.X=2493.538mil|Location1.Y=1517.289mil|Location2.Y=1524.444mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\adam\Documents\CWRU\CWRUbotix\E-Bay Mockup\RMC-RGB-Module-2021\Microcontroller_PCB_2_Layer.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2486.383mil|Location2.X=2493.538mil|Location1.Y=1517.289mil|Location2.Y=1524.444mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.11mm &lt; 0.15mm) Between Pad U1-11(20.17mm,9.265mm) on Top Layer And Pad U1-9(22.145mm,10.065mm) on Top Layer [Top Solder] Mask Sliver [0.11mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\adam\Documents\CWRU\CWRUbotix\E-Bay Mockup\RMC-RGB-Module-2021\Microcontroller_PCB_2_Layer.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2413.549mil|Location2.X=2420.704mil|Location1.Y=1538.744mil|Location2.Y=1545.9mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\adam\Documents\CWRU\CWRUbotix\E-Bay Mockup\RMC-RGB-Module-2021\Microcontroller_PCB_2_Layer.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2413.549mil|Location2.X=2420.704mil|Location1.Y=1538.744mil|Location2.Y=1545.9mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.097mm &lt; 0.15mm) Between Via (19.295mm,10.365mm) from Top Layer to Bottom Layer And Via (20.195mm,10.365mm) from Top Layer to Bottom Layer [Top Solder] Mask Sliver [0.097mm] / [Bottom Solder] Mask Sliver [0.097mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\adam\Documents\CWRU\CWRUbotix\E-Bay Mockup\RMC-RGB-Module-2021\Microcontroller_PCB_2_Layer.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2413.549mil|Location2.X=2420.704mil|Location1.Y=1452.13mil|Location2.Y=1459.286mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\adam\Documents\CWRU\CWRUbotix\E-Bay Mockup\RMC-RGB-Module-2021\Microcontroller_PCB_2_Layer.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2413.549mil|Location2.X=2420.704mil|Location1.Y=1452.13mil|Location2.Y=1459.286mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.097mm &lt; 0.15mm) Between Via (19.295mm,8.165mm) from Top Layer to Bottom Layer And Via (20.195mm,8.165mm) from Top Layer to Bottom Layer [Top Solder] Mask Sliver [0.097mm] / [Bottom Solder] Mask Sliver [0.097mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\adam\Documents\CWRU\CWRUbotix\E-Bay Mockup\RMC-RGB-Module-2021\Microcontroller_PCB_2_Layer.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2413.549mil|Location2.X=2420.704mil|Location1.Y=1495.438mil|Location2.Y=1502.594mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\adam\Documents\CWRU\CWRUbotix\E-Bay Mockup\RMC-RGB-Module-2021\Microcontroller_PCB_2_Layer.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2413.549mil|Location2.X=2420.704mil|Location1.Y=1495.438mil|Location2.Y=1502.594mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.097mm &lt; 0.15mm) Between Via (19.295mm,9.265mm) from Top Layer to Bottom Layer And Via (20.195mm,9.265mm) from Top Layer to Bottom Layer [Top Solder] Mask Sliver [0.097mm] / [Bottom Solder] Mask Sliver [0.097mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\adam\Documents\CWRU\CWRUbotix\E-Bay Mockup\RMC-RGB-Module-2021\Microcontroller_PCB_2_Layer.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2447.997mil|Location2.X=2455.152mil|Location1.Y=1538.744mil|Location2.Y=1545.9mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\adam\Documents\CWRU\CWRUbotix\E-Bay Mockup\RMC-RGB-Module-2021\Microcontroller_PCB_2_Layer.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2447.997mil|Location2.X=2455.152mil|Location1.Y=1538.744mil|Location2.Y=1545.9mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.047mm &lt; 0.15mm) Between Via (20.195mm,10.365mm) from Top Layer to Bottom Layer And Via (21.045mm,10.365mm) from Top Layer to Bottom Layer [Top Solder] Mask Sliver [0.047mm] / [Bottom Solder] Mask Sliver [0.047mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\adam\Documents\CWRU\CWRUbotix\E-Bay Mockup\RMC-RGB-Module-2021\Microcontroller_PCB_2_Layer.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2447.997mil|Location2.X=2455.152mil|Location1.Y=1452.13mil|Location2.Y=1459.286mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\adam\Documents\CWRU\CWRUbotix\E-Bay Mockup\RMC-RGB-Module-2021\Microcontroller_PCB_2_Layer.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2447.997mil|Location2.X=2455.152mil|Location1.Y=1452.13mil|Location2.Y=1459.286mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.047mm &lt; 0.15mm) Between Via (20.195mm,8.165mm) from Top Layer to Bottom Layer And Via (21.045mm,8.165mm) from Top Layer to Bottom Layer [Top Solder] Mask Sliver [0.047mm] / [Bottom Solder] Mask Sliver [0.047mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\adam\Documents\CWRU\CWRUbotix\E-Bay Mockup\RMC-RGB-Module-2021\Microcontroller_PCB_2_Layer.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2447.997mil|Location2.X=2455.152mil|Location1.Y=1495.44mil|Location2.Y=1502.596mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\adam\Documents\CWRU\CWRUbotix\E-Bay Mockup\RMC-RGB-Module-2021\Microcontroller_PCB_2_Layer.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2447.997mil|Location2.X=2455.152mil|Location1.Y=1495.44mil|Location2.Y=1502.596mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.047mm &lt; 0.15mm) Between Via (20.195mm,9.265mm) from Top Layer to Bottom Layer And Via (21.045mm,9.265mm) from Top Layer to Bottom Layer [Top Solder] Mask Sliver [0.047mm] / [Bottom Solder] Mask Sliver [0.047mm]</acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br><a name="IDE0IDSU2M3FOHJLOP1IWEBTG1ZI0TNWC1YPG2XFFQ4MSF1FAFPTOG"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Board Clearance Constraint (Gap=0mm) (All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\adam\Documents\CWRU\CWRUbotix\E-Bay Mockup\RMC-RGB-Module-2021\Microcontroller_PCB_2_Layer.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3374.188mil|Location2.X=3391.186mil|Location1.Y=2974.766mil|Location2.Y=2991.764mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\adam\Documents\CWRU\CWRUbotix\E-Bay Mockup\RMC-RGB-Module-2021\Microcontroller_PCB_2_Layer.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3374.188mil|Location2.X=3391.186mil|Location1.Y=2974.766mil|Location2.Y=2991.764mil|Absolute=True">Board Outline Clearance(Outline Edge): (0.07mm &lt; 0.4mm) Between Board Edge And Text "J2" (44.45mm,45.85mm) on Top Overlay </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\adam\Documents\CWRU\CWRUbotix\E-Bay Mockup\RMC-RGB-Module-2021\Microcontroller_PCB_2_Layer.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3878.125mil|Location2.X=3895.123mil|Location1.Y=2972.798mil|Location2.Y=2989.796mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\adam\Documents\CWRU\CWRUbotix\E-Bay Mockup\RMC-RGB-Module-2021\Microcontroller_PCB_2_Layer.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3878.125mil|Location2.X=3895.123mil|Location1.Y=2972.798mil|Location2.Y=2989.796mil|Absolute=True">Board Outline Clearance(Outline Edge): (0.17mm &lt; 0.4mm) Between Board Edge And Text "J3" (57.25mm,45.75mm) on Top Overlay </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\adam\Documents\CWRU\CWRUbotix\E-Bay Mockup\RMC-RGB-Module-2021\Microcontroller_PCB_2_Layer.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1632.702mil|Location2.X=1649.7mil|Location1.Y=1671.029mil|Location2.Y=1688.027mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\adam\Documents\CWRU\CWRUbotix\E-Bay Mockup\RMC-RGB-Module-2021\Microcontroller_PCB_2_Layer.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1632.702mil|Location2.X=1649.7mil|Location1.Y=1671.029mil|Location2.Y=1688.027mil|Absolute=True">Board Outline Clearance(Outline Edge): (0.073mm &lt; 0.4mm) Between Board Edge And Track (0.2mm,13.85mm)(0.2mm,16.35mm) on Top Overlay </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\adam\Documents\CWRU\CWRUbotix\E-Bay Mockup\RMC-RGB-Module-2021\Microcontroller_PCB_2_Layer.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1632.702mil|Location2.X=1649.7mil|Location1.Y=1769.453mil|Location2.Y=1786.451mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\adam\Documents\CWRU\CWRUbotix\E-Bay Mockup\RMC-RGB-Module-2021\Microcontroller_PCB_2_Layer.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1632.702mil|Location2.X=1649.7mil|Location1.Y=1769.453mil|Location2.Y=1786.451mil|Absolute=True">Board Outline Clearance(Outline Edge): (0.073mm &lt; 0.4mm) Between Board Edge And Track (0.2mm,16.35mm)(11.2mm,16.35mm) on Top Overlay </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\adam\Documents\CWRU\CWRUbotix\E-Bay Mockup\RMC-RGB-Module-2021\Microcontroller_PCB_2_Layer.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1632.701mil|Location2.X=1649.699mil|Location1.Y=1952.526mil|Location2.Y=1969.524mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\adam\Documents\CWRU\CWRUbotix\E-Bay Mockup\RMC-RGB-Module-2021\Microcontroller_PCB_2_Layer.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1632.701mil|Location2.X=1649.699mil|Location1.Y=1952.526mil|Location2.Y=1969.524mil|Absolute=True">Board Outline Clearance(Outline Edge): (0.073mm &lt; 0.4mm) Between Board Edge And Track (0.2mm,21mm)(0.2mm,34mm) on Top Overlay </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\adam\Documents\CWRU\CWRUbotix\E-Bay Mockup\RMC-RGB-Module-2021\Microcontroller_PCB_2_Layer.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1632.701mil|Location2.X=1649.699mil|Location1.Y=1952.526mil|Location2.Y=1969.524mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\adam\Documents\CWRU\CWRUbotix\E-Bay Mockup\RMC-RGB-Module-2021\Microcontroller_PCB_2_Layer.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1632.701mil|Location2.X=1649.699mil|Location1.Y=1952.526mil|Location2.Y=1969.524mil|Absolute=True">Board Outline Clearance(Outline Edge): (0.073mm &lt; 0.4mm) Between Board Edge And Track (0.2mm,21mm)(11.2mm,21mm) on Top Overlay </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\adam\Documents\CWRU\CWRUbotix\E-Bay Mockup\RMC-RGB-Module-2021\Microcontroller_PCB_2_Layer.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1632.701mil|Location2.X=1649.699mil|Location1.Y=2464.336mil|Location2.Y=2481.334mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\adam\Documents\CWRU\CWRUbotix\E-Bay Mockup\RMC-RGB-Module-2021\Microcontroller_PCB_2_Layer.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1632.701mil|Location2.X=1649.699mil|Location1.Y=2464.336mil|Location2.Y=2481.334mil|Absolute=True">Board Outline Clearance(Outline Edge): (0.073mm &lt; 0.4mm) Between Board Edge And Track (0.2mm,34mm)(0.2mm,36.5mm) on Top Overlay </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\adam\Documents\CWRU\CWRUbotix\E-Bay Mockup\RMC-RGB-Module-2021\Microcontroller_PCB_2_Layer.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1632.701mil|Location2.X=1649.699mil|Location1.Y=2562.762mil|Location2.Y=2579.76mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\adam\Documents\CWRU\CWRUbotix\E-Bay Mockup\RMC-RGB-Module-2021\Microcontroller_PCB_2_Layer.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1632.701mil|Location2.X=1649.699mil|Location1.Y=2562.762mil|Location2.Y=2579.76mil|Absolute=True">Board Outline Clearance(Outline Edge): (0.073mm &lt; 0.4mm) Between Board Edge And Track (0.2mm,36.5mm)(11.2mm,36.5mm) on Top Overlay </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\adam\Documents\CWRU\CWRUbotix\E-Bay Mockup\RMC-RGB-Module-2021\Microcontroller_PCB_2_Layer.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1632.702mil|Location2.X=1649.7mil|Location1.Y=1434.807mil|Location2.Y=1451.805mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\adam\Documents\CWRU\CWRUbotix\E-Bay Mockup\RMC-RGB-Module-2021\Microcontroller_PCB_2_Layer.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1632.702mil|Location2.X=1649.7mil|Location1.Y=1434.807mil|Location2.Y=1451.805mil|Absolute=True">Board Outline Clearance(Outline Edge): (0.073mm &lt; 0.4mm) Between Board Edge And Track (0.2mm,7.85mm)(0.2mm,13.85mm) on Top Overlay </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\adam\Documents\CWRU\CWRUbotix\E-Bay Mockup\RMC-RGB-Module-2021\Microcontroller_PCB_2_Layer.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1632.702mil|Location2.X=1649.7mil|Location1.Y=1434.807mil|Location2.Y=1451.805mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\adam\Documents\CWRU\CWRUbotix\E-Bay Mockup\RMC-RGB-Module-2021\Microcontroller_PCB_2_Layer.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1632.702mil|Location2.X=1649.7mil|Location1.Y=1434.807mil|Location2.Y=1451.805mil|Absolute=True">Board Outline Clearance(Outline Edge): (0.073mm &lt; 0.4mm) Between Board Edge And Track (0.2mm,7.85mm)(11.2mm,7.85mm) on Top Overlay </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\adam\Documents\CWRU\CWRUbotix\E-Bay Mockup\RMC-RGB-Module-2021\Microcontroller_PCB_2_Layer.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4347.347mil|Location2.X=4364.345mil|Location1.Y=1769.453mil|Location2.Y=1786.451mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\adam\Documents\CWRU\CWRUbotix\E-Bay Mockup\RMC-RGB-Module-2021\Microcontroller_PCB_2_Layer.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4347.347mil|Location2.X=4364.345mil|Location1.Y=1769.453mil|Location2.Y=1786.451mil|Absolute=True">Board Outline Clearance(Outline Edge): (0.023mm &lt; 0.4mm) Between Board Edge And Track (57.85mm,16.35mm)(68.85mm,16.35mm) on Top Overlay </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\adam\Documents\CWRU\CWRUbotix\E-Bay Mockup\RMC-RGB-Module-2021\Microcontroller_PCB_2_Layer.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4347.347mil|Location2.X=4364.345mil|Location1.Y=1434.809mil|Location2.Y=1451.807mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\adam\Documents\CWRU\CWRUbotix\E-Bay Mockup\RMC-RGB-Module-2021\Microcontroller_PCB_2_Layer.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4347.347mil|Location2.X=4364.345mil|Location1.Y=1434.809mil|Location2.Y=1451.807mil|Absolute=True">Board Outline Clearance(Outline Edge): (0.023mm &lt; 0.4mm) Between Board Edge And Track (57.85mm,7.85mm)(68.85mm,7.85mm) on Top Overlay </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\adam\Documents\CWRU\CWRUbotix\E-Bay Mockup\RMC-RGB-Module-2021\Microcontroller_PCB_2_Layer.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4347.347mil|Location2.X=4364.345mil|Location1.Y=1769.453mil|Location2.Y=1786.451mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\adam\Documents\CWRU\CWRUbotix\E-Bay Mockup\RMC-RGB-Module-2021\Microcontroller_PCB_2_Layer.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4347.347mil|Location2.X=4364.345mil|Location1.Y=1769.453mil|Location2.Y=1786.451mil|Absolute=True">Board Outline Clearance(Outline Edge): (0.023mm &lt; 0.4mm) Between Board Edge And Track (68.85mm,10.35mm)(68.85mm,16.35mm) on Top Overlay </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\adam\Documents\CWRU\CWRUbotix\E-Bay Mockup\RMC-RGB-Module-2021\Microcontroller_PCB_2_Layer.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4347.347mil|Location2.X=4364.345mil|Location1.Y=1533.233mil|Location2.Y=1550.231mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\adam\Documents\CWRU\CWRUbotix\E-Bay Mockup\RMC-RGB-Module-2021\Microcontroller_PCB_2_Layer.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4347.347mil|Location2.X=4364.345mil|Location1.Y=1533.233mil|Location2.Y=1550.231mil|Absolute=True">Board Outline Clearance(Outline Edge): (0.023mm &lt; 0.4mm) Between Board Edge And Track (68.85mm,7.85mm)(68.85mm,10.35mm) on Top Overlay </acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br></body>
+</html>
